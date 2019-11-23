@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "37056287074",
+    "firebase_url": "https://haircut-appointments.firebaseio.com",
+    "project_id": "haircut-appointments",
+    "storage_bucket": "haircut-appointments.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37056287074:android:6f82aa69e9212332",
+        "android_client_info": {
+          "package_name": "com.hit.haircutappointments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37056287074-hkc7foleob3gvc0a46fgvrbhlbn0ftnd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hit.haircutappointments",
+            "certificate_hash": "3b3572329871fdc33357c93b3877325fc8ff2961"
+          }
+        },
+        {
+          "client_id": "37056287074-loagfag7sv57jo04vb7voth1oqjnl7l1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hit.haircutappointments",
+            "certificate_hash": "ccd649ef0c89f8ec0d87c10506965e27b231ab77"
+          }
+        },
+        {
+          "client_id": "37056287074-2ngqkjhpkaimu4ru8v2f1fcvigqs5177.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvUK_3ACV2ddMbmmbUp-ZwMqXoXKZGCTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37056287074-2ngqkjhpkaimu4ru8v2f1fcvigqs5177.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

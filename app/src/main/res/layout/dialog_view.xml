@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="150dp"
+        android:layout_marginStart="60dp"
+        android:hint="Action Name"
+        android:paddingStart="5dp"
+        android:id="@+id/editTextActionName" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:layout_marginStart="60dp"
+        android:paddingStart="5dp"
+        android:digits="0123456789"
+        android:hint="Price"
+        android:id="@+id/editTextPrice" />
+</LinearLayout>

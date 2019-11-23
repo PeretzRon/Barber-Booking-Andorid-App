@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Barbershop Invitation</string>
+
+    <string name="remember_me">Remember Me</string>
+    <string name="forget_password">Forget Password</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="error_date_is_not_exist"> Error! date is not exist</string>
+    <string name="date_save_successfully"> Success! date is open now</string>
+    <string name="error_not_save"> Error! date not saved</string>
+    <string name="date_in_use"> Error! date already in use</string>
+    <string name="remove">Success! date removed</string>
+    <string name="date_format">dd/MM/yyyy</string>
+
+    <string-array name="AdminOptions">
+        <item>Available</item>
+        <item>CancelByManager</item>
+        <item>OrderedByPhone</item>
+    </string-array>
+</resources>
