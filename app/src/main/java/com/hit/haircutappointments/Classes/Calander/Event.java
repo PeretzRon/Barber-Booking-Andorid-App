@@ -2,18 +2,15 @@ package com.hit.haircutappointments.Classes.Calander;
 
 import java.util.Calendar;
 
-public class Event
-{
-    public enum eEventStatus
-    {
+public class Event {
+    public enum eEventStatus {
         Available,
         UnAvailable,
         CancelByManager,
         OrderedByPhone,
     }
 
-    public enum eEventType
-    {
+    public enum eEventType {
         ManHairCut,
         WomanHairCut,
         KidsHairCut
@@ -23,40 +20,53 @@ public class Event
     private eEventType mEventType;
     private Customer mMustomer;
     private String mUserId;
-    private boolean mIsLongDay;
     private EventTime mEventTime;
+    private String mNameOrderedByPhone;
+    private String mPhoneOrderedByPhone;
 
 
-    public Event(Calendar iStartEvent, Calendar iEndEvent)
-    {
-        this.mEventTime = new EventTime(iStartEvent,iEndEvent);
+    public Event(Calendar iStartEvent, Calendar iEndEvent) {
+        this.mEventTime = new EventTime(iStartEvent, iEndEvent);
         this.mEventStatus = eEventStatus.Available;
         this.mUserId = "";
+        this.mNameOrderedByPhone = "";
+        this.mPhoneOrderedByPhone = "";
     }
 
-    public eEventStatus getmEventStatus()
-    {
+    public eEventStatus getmEventStatus() {
         return mEventStatus;
     }
 
-    public void setmEventStatus(eEventStatus mEventStatus)
-    {
+    public void setmEventStatus(eEventStatus mEventStatus) {
         this.mEventStatus = mEventStatus;
     }
 
-    public eEventType getmEventType()
-    {
+    public eEventType getmEventType() {
         return mEventType;
     }
 
-    public void setmEventType(eEventType mEventType)
-    {
+    public void setmEventType(eEventType mEventType) {
         this.mEventType = mEventType;
     }
 
+    public Event() {
+    }
 
+    public String getmNameOrderedByPhone() {
+        return mNameOrderedByPhone;
+    }
 
-    public Event(){}
+    public void setmNameOrderedByPhone(String mNameOrderedByPhone) {
+        this.mNameOrderedByPhone = mNameOrderedByPhone;
+    }
+
+    public String getmPhoneOrderedByPhone() {
+        return mPhoneOrderedByPhone;
+    }
+
+    public void setmPhoneOrderedByPhone(String mPhoneOrderedByPhone) {
+        this.mPhoneOrderedByPhone = mPhoneOrderedByPhone;
+    }
 
     public String getmUserId() {
         return mUserId;
@@ -66,24 +76,20 @@ public class Event
         this.mUserId = mUserId;
     }
 
-    public EventTime getmEventTime()
-    {
+    public EventTime getmEventTime() {
         return mEventTime;
     }
 
-    public Customer getmMustomer()
-    {
+    public Customer getmMustomer() {
         return mMustomer;
     }
 
-    public void setmMustomer(String iId, String iName, String iEmail, String iPhoneNumber)
-    {
-        this.mMustomer = new Customer(iId,iName,iEmail, iPhoneNumber);
+    public void setmMustomer(String iId, String iName, String iEmail, String iPhoneNumber) {
+        this.mMustomer = new Customer(iId, iName, iEmail, iPhoneNumber);
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Event{" +
                 "mEventStatus=" + mEventStatus +
                 ", mEventTime=" + mEventTime +

@@ -190,8 +190,8 @@ public class SpecificDayFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try {
-                            String nameOfClientIfTheEventIsOrdered;
-                            String phoneOfClientIfTheEventIsOrdered;
+                            String nameOfClientIfTheEventIsOrdered = "";
+                            String phoneOfClientIfTheEventIsOrdered = "";
                             mEventOfDayArrayList.clear(); // clear list for new instance
                             mSpecificDayForAdminEventLists.clear(); // clear list for new instance
                             mSpecificDayEventLists.clear(); // clear list for new instance
@@ -211,6 +211,16 @@ public class SpecificDayFragment extends Fragment {
                                     }
                                 } else if (elem.getmEventStatus() == Event.eEventStatus.OrderedByPhone) {
                                     bitmap = mOrderByPhoneEventImage; // image for order By Phone
+                                    try {
+                                        if (!elem.getmNameOrderedByPhone().equals("")) {
+                                            nameOfClientIfTheEventIsOrdered =
+                                                    elem.getmNameOrderedByPhone();
+                                            phoneOfClientIfTheEventIsOrdered = elem.getmPhoneOrderedByPhone();
+                                        }
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+
                                     // event
                                 } else if (elem.getmEventStatus() == Event.eEventStatus.CancelByManager) {
                                     bitmap = mUnavailableEventImage; // image cancel By manager
@@ -223,6 +233,8 @@ public class SpecificDayFragment extends Fragment {
                                                     mUserIdToUserDetailsHashMap.get(elem.getmUserId()).getmLastName();
                                     phoneOfClientIfTheEventIsOrdered =
                                             mUserIdToUserDetailsHashMap.get(elem.getmUserId()).getmPhoneNumber();
+                                } else if (elem.getmEventStatus().toString().equals(Event.eEventStatus.OrderedByPhone.toString())) {
+                                    System.out.println("");
                                 } else {
                                     nameOfClientIfTheEventIsOrdered = "Name: Unavailable";
                                     phoneOfClientIfTheEventIsOrdered = "Phone: Unavailable";
@@ -352,11 +364,7 @@ public class SpecificDayFragment extends Fragment {
                 TextView eventId =
                         mRecyclerView.findViewHolderForAdapterPosition(selectedItemPosition).itemView.findViewById(R.id.textViewEventId);
                 final String eventID = eventId.getText().toString();
-                Toast.makeText(getActivity(), "Press Long" + eventID, Toast.LENGTH_LONG).show();
                 showDialogForSaveByPhoneOnlyAdmin(eventID);
-//                String day = textFromCard.getText().toString();
-//                String[] daySelected = day.split("/");
-//                showDialogToCancelAllEvents(daySelected);
             }
 
             return false;
@@ -447,7 +455,8 @@ public class SpecificDayFragment extends Fragment {
 
     }
 
-    private void saveOrderByPhoneToFireBase(String iName, String iPhoneNubmer, String iChildId) {
+    private void saveOrderByPhoneToFireBase(final String iName, final String iPhoneNubmer,
+                                            String iChildId) {
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference(
                 "Days").child(mYear).child(mMount).child(mDay).child("mEvents").child(iChildId);
 
@@ -456,6 +465,8 @@ public class SpecificDayFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 rootRef.child("mEventStatus").setValue(Event.eEventStatus.OrderedByPhone.toString());
                 rootRef.child("mUserId").setValue(Event.eEventStatus.OrderedByPhone.toString());
+                rootRef.child("mNameOrderedByPhone").setValue(iName);
+                rootRef.child("mPhoneOrderedByPhone").setValue(iPhoneNubmer);
             }
 
             @Override
@@ -477,10 +488,16 @@ public class SpecificDayFragment extends Fragment {
                         rootRef.child("mEventStatus").setValue(status.toString()); // set the
                         // status
                         rootRef.child("mUserId").setValue(mAdminUserId);
-                        if (status.toString().equals("Available")) {
+                        if (status.toString().equals(Event.eEventStatus.Available.toString())) {
                             // in case admin want to make te event Available so user id muse be
                             // empty
                             rootRef.child("mUserId").setValue("");
+                            rootRef.child("mNameOrderedByPhone").removeValue();
+                            rootRef.child("mPhoneOrderedByPhone").removeValue();
+                        }
+                        if (status.toString().equals(Event.eEventStatus.CancelByManager.toString())) {
+                            rootRef.child("mNameOrderedByPhone").removeValue();
+                            rootRef.child("mPhoneOrderedByPhone").removeValue();
                         }
                         break;
                     }
