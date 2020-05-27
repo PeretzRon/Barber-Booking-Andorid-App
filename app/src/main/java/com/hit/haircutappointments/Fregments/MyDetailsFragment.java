@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -171,7 +173,50 @@ public class MyDetailsFragment extends Fragment {
         return view;
     }
 
+    private void editGender(final String iWhatToEdit){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Update Gender");
+        builder.setIcon(R.drawable.ic_edit_black2_24dp);  // make icon to dialog
+        builder.setCancelable(true);
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_edit_gender, null);
+        builder.setView(view);
+        builder.setPositiveButton(
+                "Update",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        builder.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // do nothing
+                    }
+                });
+        final AlertDialog alert11 = builder.create();
+        alert11.show();
+        alert11.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RadioGroup radioGroup = view.findViewById(R.id.edit_gender_radio_group);
+                int radioButtonID = radioGroup.getCheckedRadioButtonId();
+                System.out.println(radioButtonID);
+                String newGender = radioButtonID == R.id.radio_male ? "Male" : "Female";
+                updateChangesInFirBaas(iWhatToEdit, newGender);
+                alert11.dismiss();
+            }
+        });
+    }
+
     private void showDialogToEditDetails(final String iWhatToEdit) {
+        if (iWhatToEdit.equals("Gender")) {
+            // Gender dialog is radio button dialog
+            editGender(iWhatToEdit);
+            return;
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Update " + iWhatToEdit);
         builder.setIcon(R.drawable.ic_edit_black2_24dp);  // make icon to dialog
@@ -185,9 +230,6 @@ public class MyDetailsFragment extends Fragment {
         switch (iWhatToEdit) {
             case "Name":
                 editTextDetails.setText(mFullName.getText().toString());
-                break;
-            case "Gender":
-                editTextDetails.setText(mGender.getText().toString());
                 break;
             case "Phone Number":
                 editTextDetails.setText(mPhoneNumber.getText().toString());
@@ -209,6 +251,7 @@ public class MyDetailsFragment extends Fragment {
                         // do nothing
                     }
                 });
+
         final AlertDialog alert11 = builder.create();
         alert11.show();
         alert11.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {

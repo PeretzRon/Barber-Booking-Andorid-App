@@ -1,6 +1,6 @@
 # Barbarshop Booking - Android App
 
-<img src="/readme/app_icon.png" align="left"
+<img src="readme/app_icon.png" align="left"
 width="200" hspace="10" vspace="10">
 </br>
 Barbershop booking is a application of Schedule appointments to the barbershop.</br>
@@ -38,18 +38,18 @@ With this app we learned the following features:
 
 ## Screenshots
 
-[<img src="/readme/screenshots-1.JPG" align="left"
+[<img src="readme/screenshots-1.JPG" align="left"
 width="200"
-    hspace="10" vspace="10">](/readme/screenshots-1.JPG)
-[<img src="/readme/screenshots-2.JPG" align="center"
+    hspace="10" vspace="10">](readme/screenshots-1.JPG)
+[<img src="readme/screenshots-2.JPG" align="center"
 width="200"
-    hspace="10" vspace="10">](/readme/screen-shots2.JPG)
-[<img src="/readme/screenshots-3.JPG" align="center"
+    hspace="10" vspace="10">](readme/screen-shots2.JPG)
+[<img src="readme/screenshots-3.JPG" align="center"
 width="200"
-    hspace="10" vspace="10">](/readme/screenshots-3.JPG)
-[<img src="/readme/screenshots-4.JPG" align="center"
+    hspace="10" vspace="10">](readme/screenshots-3.JPG)
+[<img src="readme/screenshots-4.JPG" align="center"
 width="200"
-    hspace="10" vspace="10">](/readme/screenshots-4.JPG)
+    hspace="10" vspace="10">](readme/screenshots-4.JPG)
 
 ## Permissions
 
